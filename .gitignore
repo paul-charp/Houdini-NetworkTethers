@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.hip
+*.hiplc
+*.hipnc
+backup/
+
+# Generated from SideFX files: never commit or distribute.
+src/generated/
+build/
+dist/

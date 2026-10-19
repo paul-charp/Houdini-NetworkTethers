@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menuDocument>
+  <menu>
+    <separatorItem/>
+    <scriptItem id="tethers_tether">
+      <label>Tether to Leader...</label>
+      <scriptCode><![CDATA[import tethers.tools
+tethers.tools.link_from_menu(kwargs)]]></scriptCode>
+    </scriptItem>
+    <scriptItem id="tethers_untether">
+      <label>Untether</label>
+      <scriptCode><![CDATA[import tethers.tools
+tethers.tools.unlink_from_menu(kwargs)]]></scriptCode>
+    </scriptItem>
+  </menu>
+</menuDocument>

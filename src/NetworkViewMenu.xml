@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Supplements $HFS/houdini/NetworkViewMenu.xml:
+     - a Tethers menu after Layout: the three tether actions and display modes.
+       The toolbar buttons in config/Applications/FUSE_NetEditorApp.ui send
+       these items' ids, so the menu must stay for the buttons to work;
+     - a Network Tethers section in the View menu, under Dependency Links.
+     Every item has an id and an explicit position: items without them were
+     reordered when the files were merged. -->
+<mainMenu>
+  <menuBar>
+    <subMenu id="tethers_menu">
+      <label> Tethers </label>
+      <insertAfter>layout_menu</insertAfter>
+
+      <scriptItem id="h.pane.wsheet.tethers_tether">
+        <label>Tether to Leader...</label>
+        <icon>BUTTONS_link</icon>
+        <insertBefore/>
+        <scriptCode><![CDATA[import tethers.tools
+tethers.tools.link_selected({"pane": kwargs.get("editor")})]]></scriptCode>
+      </scriptItem>
+      <scriptItem id="h.pane.wsheet.tethers_untether">
+        <label>Untether</label>
+        <icon>BUTTONS_disconnect</icon>
+        <insertAfter>h.pane.wsheet.tethers_tether</insertAfter>
+        <scriptCode><![CDATA[import tethers.tools
+tethers.tools.unlink_selected({"pane": kwargs.get("editor")})]]></scriptCode>
+      </scriptItem>
+      <scriptItem id="h.pane.wsheet.tethers_select_tethered">
+        <label>Select Tethered</label>
+        <icon>BUTTONS_selectable_on</icon>
+        <insertAfter>h.pane.wsheet.tethers_untether</insertAfter>
+        <scriptCode><![CDATA[import tethers.tools
+tethers.tools.select_linked({"pane": kwargs.get("editor")})]]></scriptCode>
+      </scriptItem>
+
+      <titleItem id="tethers_menu_display_title">
+        <label>Display</label>
+        <insertAfter>h.pane.wsheet.tethers_select_tethered</insertAfter>
+      </titleItem>
+      <scriptMenuStripRadio id="tethers_menu_strip">
+        <insertAfter>tethers_menu_display_title</insertAfter>
+        <variableName>TETHERS_DISPLAY</variableName>
+        <scriptRadioItem id="h.pane.wsheet.tethers_display_off">
+          <label>Hide</label>
+          <variableValue>off</variableValue>
+          <scriptCode><![CDATA[import tethers.tools
+tethers.tools.set_display("off")]]></scriptCode>
+        </scriptRadioItem>
+        <scriptRadioItem id="h.pane.wsheet.tethers_display_selected">
+          <label>Show for Selected Items</label>
+          <variableValue>selected</variableValue>
+          <scriptCode><![CDATA[import tethers.tools
+tethers.tools.set_display("selected")]]></scriptCode>
+        </scriptRadioItem>
+        <scriptRadioItem id="h.pane.wsheet.tethers_display_all">
+          <label>Show for All Items</label>
+          <variableValue>all</variableValue>
+          <scriptCode><![CDATA[import tethers.tools
+tethers.tools.set_display("all")]]></scriptCode>
+        </scriptRadioItem>
+      </scriptMenuStripRadio>
+    </subMenu>
+
+    <subMenu id="view_menu">
+      <titleItem id="tethers_title">
+        <label>Network Tethers</label>
+        <insertAfter>pane.wsheet.showspareinputdep</insertAfter>
+      </titleItem>
+      <scriptMenuStripRadio id="tethers_view_strip">
+        <insertAfter>tethers_title</insertAfter>
+        <variableName>TETHERS_DISPLAY</variableName>
+        <scriptRadioItem id="tethers_view_display_off">
+          <label>Hide</label>
+          <variableValue>off</variableValue>
+          <scriptCode><![CDATA[import tethers.tools
+tethers.tools.set_display("off")]]></scriptCode>
+        </scriptRadioItem>
+        <scriptRadioItem id="tethers_view_display_selected">
+          <label>Show for Selected Items</label>
+          <variableValue>selected</variableValue>
+          <scriptCode><![CDATA[import tethers.tools
+tethers.tools.set_display("selected")]]></scriptCode>
+        </scriptRadioItem>
+        <scriptRadioItem id="tethers_view_display_all">
+          <label>Show for All Items</label>
+          <variableValue>all</variableValue>
+          <scriptCode><![CDATA[import tethers.tools
+tethers.tools.set_display("all")]]></scriptCode>
+        </scriptRadioItem>
+      </scriptMenuStripRadio>
+
+    </subMenu>
+  </menuBar>
+</mainMenu>
