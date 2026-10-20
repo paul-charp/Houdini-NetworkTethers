@@ -184,10 +184,10 @@ tr.pick td { background: var(--accent-soft); }
   <section>
     <h2>UX</h2>
     <h3>Creating a link</h3>
-    <p>Tether to Leader, Unlink and Select Tethered are icon buttons at the left of the network editor's own toolbar icons. They send the actions of a <b>Links</b> menu (after Layout), which also holds the three display modes. The buttons only work through menu-defined actions, so the menu has to stay. Its <code>h.pane.wsheet.tethers_*</code> ids can also take network-editor hotkeys in the Hotkey Manager. A <b>Links</b> radial menu holds the same actions plus the display modes, and nodes get Link and Unlink in their right-click menu.</p>
+    <p>Tether to Leader, Unlink and Select Tethered are icon buttons at the left of the network editor's own toolbar icons. They send the actions of a <b>Links</b> menu (after Layout), which also holds the three display modes. The buttons only work through menu-defined actions, so the menu has to stay. Its <code>h.pane.wsheet.tethers_*</code> ids can also take network-editor hotkeys in the Hotkey Manager. Nodes also get Tether and Untether in their right-click menu.</p>
     <p>Select the followers, click the <b>Tether to Leader</b> button, then click the leader. While you pick, a dashed arrow runs from the cursor to each pending follower, and turns solid when it snaps to an item. Esc or a click on empty space cancels. This mirrors how a linked image is pinned, and avoids guessing the leader from selection order.</p>
     <h3>Seeing links</h3>
-    <p>Links are drawn in the network editor as smooth, antialiased arrows in orange: a round anchor at the leader, a filled head at the follower. Only the arrows are drawn, with no boxes around items. They sit under the items, track the drag preview live, and keep a constant on-screen size at any zoom. Three modes, remembered across sessions, are set from the Tethers menu or the radial menu:</p>
+    <p>Links are drawn in the network editor as smooth, antialiased arrows in orange: a round anchor at the leader, a filled head at the follower. Only the arrows are drawn, with no boxes around items. They sit under the items, track the drag preview live, and keep a constant on-screen size at any zoom. Three modes, remembered across sessions, are set from the Tethers menu:</p>
     <ul>
       <li><b>Hide</b>.</li>
       <li><b>Show for Selected Items</b> (default): only the chains touching the selection.</li>
@@ -235,8 +235,6 @@ tr.pick td { background: var(--accent-soft); }
   OPmenu.xml              node right-click: Tether to Leader…, Unlink
   config/Applications/
     FUSE_NetEditorApp.ui  network editor toolbar + 3 link buttons
-  radialmenu/
-    tethers.radialmenu    Links radial menu (bind a hotkey)
   python3.11libs/
     uiready.py            installs the editor hooks at startup
     tetherspick.py        click-the-leader editor mode

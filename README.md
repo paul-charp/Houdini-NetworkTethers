@@ -8,9 +8,8 @@ background image can be pinned to a node.
   Chains work; cycles are refused.
 - Tethers are drawn as orange arrows (leader → follower). Tethers menu:
   hide, show for selected items, show for all.
-- Toolbar buttons, a **Tethers** menu, node right-click entries and a
-  `tethers` radial menu: Tether to Leader (then click the leader), Untether,
-  Select Tethered.
+- Toolbar buttons, a **Tethers** menu and node right-click entries:
+  Tether to Leader (then click the leader), Untether, Select Tethered.
 - Tethers are stored in the parent network's user data and save with the hip.
 
 See [docs/writeup.html](docs/writeup.html) for the exploration and design.
@@ -54,7 +53,6 @@ come from its section in `CHANGELOG.md`.
 | `src/python3.11libs/uiready.py` | installs the editor hooks |
 | `src/NetworkViewMenu.xml` | Tethers menu |
 | `src/OPmenu.xml` | node right-click entries |
-| `src/radialmenu/tethers.radialmenu` | radial menu (bind a hotkey to `h.pane.wsheet.radial:tethers`) |
 
 ## How the toolbar buttons work
 
