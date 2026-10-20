@@ -27,6 +27,28 @@ startup the package generates it once per Houdini build, into
 `generated/<build>/`, and each build loads its own. One install serves
 several Houdini 21 builds; the extracted folder must be writable.
 
+## Hotkeys
+
+No keys are assigned by default. To add your own:
+
+1. Choose **Edit › Hotkeys** in Houdini's main menu.
+2. In the context tree, select **Panes › Network Editor**.
+3. Type `tether` in the filter box.
+4. Select an action, click its key field and press the key you want.
+
+| Action | Hotkey symbol |
+| --- | --- |
+| Tether to Leader... | `h.pane.wsheet.tethers_tether` |
+| Untether | `h.pane.wsheet.tethers_untether` |
+| Select Tethered | `h.pane.wsheet.tethers_select_tethered` |
+| Cycle Tether Display | `h.pane.wsheet.tethers_cycle_display` |
+| Hide | `h.pane.wsheet.tethers_display_off` |
+| Show for Selected Items | `h.pane.wsheet.tethers_display_selected` |
+| Show for All Items | `h.pane.wsheet.tethers_display_all` |
+
+The keys work while the cursor is over a network editor. Cycle Tether
+Display loops Show for Selected Items → Show for All Items → Hide.
+
 ## Development
 
 Point the prefs package at `src/`
