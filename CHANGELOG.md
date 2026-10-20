@@ -7,5 +7,5 @@
 - Tethers drawn as arrows; display modes hide, selected, all
 - Cycle Tether Display hotkey command (no default key)
 - Toolbar buttons, Tethers menu, node right-click entries
-- Toolbar generated from the local Houdini install at startup
+- Toolbar generated per Houdini build from the local install at startup
 - Tethers stored in network user data, saved with the hip
