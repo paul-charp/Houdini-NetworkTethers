@@ -7,7 +7,8 @@ background image can be pinned to a node.
 - Drag a leader and its followers move with it, live, in one undo step.
   Chains work; cycles are refused.
 - Tethers are drawn as orange arrows (leader → follower). Tethers menu:
-  hide, show for selected items, show for all.
+  hide, show for selected items, show for all. A **Cycle Tether Display**
+  hotkey (network editor context, no key assigned) loops through them.
 - Toolbar buttons, a **Tethers** menu and node right-click entries:
   Tether to Leader (then click the leader), Untether, Select Tethered.
 - Tethers are stored in the parent network's user data and save with the hip.

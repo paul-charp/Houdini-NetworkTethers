@@ -8,13 +8,16 @@ Wrappers around the stock nodegraph code:
 - EditorUpdates.applyToEditor runs after every network editor event and
   replaces the editor's shapes. Adding the link shapes there keeps them on
   screen and in sync with drag previews.
+- createEventHandler handles the Cycle Tether Display hotkey.
 """
 
 import traceback
 
 import hou
 import nodegraph
+import nodegraphdisplay
 import nodegraphutils
+from canvaseventtypes import KeyboardEvent
 
 from tethers import core
 
@@ -243,12 +246,36 @@ def _apply_to_editor(self, editor):
     _originals["applyToEditor"](self, editor)
 
 
+# -- Hotkey -------------------------------------------------------------------
+
+# Listed in the Hotkey Manager under the network editor, with no key assigned.
+# Like nodegraph's own hotkeys, the key is matched in Python, so it needs no
+# menu item.
+CYCLE_DISPLAY_SYMBOL = "h.pane.wsheet.tethers_cycle_display"
+
+
+def register_hotkeys():
+    hou.hotkeys.addCommand(CYCLE_DISPLAY_SYMBOL, "Cycle Tether Display",
+                           "Cycle the tether display: hide, selected items, all items")
+    # Without the binding hou.ui.isKeyMatch rejects the symbol as invalid.
+    hou.hotkeys.addCommandBinding("h.pane.wsheet", CYCLE_DISPLAY_SYMBOL)
+
+
+def _create_event_handler(uievent, pending_actions):
+    if isinstance(uievent, KeyboardEvent) and uievent.eventtype.endswith("keyhit") \
+       and nodegraphdisplay.setKeyPrompt(uievent.editor, uievent, CYCLE_DISPLAY_SYMBOL):
+        cycle_display(uievent.editor)
+        return None, True
+    return _originals["createEventHandler"](uievent, pending_actions)
+
+
 # -- Install ----------------------------------------------------------------
 
 _PATCHES = (
     (nodegraph.MovableItemMoveHandler, "getItemsToMove", _get_items_to_move),
     (nodegraph.MovableItemMoveHandler, "applyAdjustments", _apply_adjustments),
     (nodegraphutils.EditorUpdates, "applyToEditor", _apply_to_editor),
+    (nodegraph, "createEventHandler", _create_event_handler),
 )
 
 
@@ -268,6 +295,7 @@ def install():
             hou.hipFile.removeEventCallback(callback)
     hou.hipFile.addEventCallback(_on_hip_event)
     sync_menu()
+    register_hotkeys()
 
 
 def uninstall():
