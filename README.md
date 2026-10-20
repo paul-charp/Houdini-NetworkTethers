@@ -13,8 +13,6 @@ background image can be pinned to a node.
   Tether to Leader (then click the leader), Untether, Select Tethered.
 - Tethers are stored in the parent network's user data and save with the hip.
 
-See [docs/writeup.html](docs/writeup.html) for the exploration and design.
-
 ## Install
 
 1. Download `Houdini-NetworkTethers-<version>.zip` from the releases and
