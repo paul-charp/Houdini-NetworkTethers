@@ -58,7 +58,7 @@ def select_linked(kwargs=None):
 
 
 def set_display(mode):
-    """Called by the View menu's Positional Links radio strip."""
+    """Called by the Tethers menu's display radio strip."""
     nl_editor.set_display(mode)
 
 

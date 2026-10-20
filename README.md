@@ -6,8 +6,8 @@ background image can be pinned to a node.
 
 - Drag a leader and its followers move with it, live, in one undo step.
   Chains work; cycles are refused.
-- Tethers are drawn as orange arrows (leader → follower). Tethers menu or
-  View › Network Tethers: hide, show for selected items, show for all.
+- Tethers are drawn as orange arrows (leader → follower). Tethers menu:
+  hide, show for selected items, show for all.
 - Toolbar buttons, a **Tethers** menu, node right-click entries and a
   `tethers` radial menu: Tether to Leader (then click the leader), Untether,
   Select Tethered.
@@ -52,7 +52,7 @@ come from its section in `CHANGELOG.md`.
 | `src/python3.11libs/tetherspick.py` | click-the-leader network editor mode |
 | `src/python3.11libs/pythonrc.py` | generates the toolbar file before the UI loads |
 | `src/python3.11libs/uiready.py` | installs the editor hooks |
-| `src/NetworkViewMenu.xml` | Tethers menu, View › Network Tethers |
+| `src/NetworkViewMenu.xml` | Tethers menu |
 | `src/OPmenu.xml` | node right-click entries |
 | `src/radialmenu/tethers.radialmenu` | radial menu (bind a hotkey to `h.pane.wsheet.radial:tethers`) |
 
